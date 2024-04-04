@@ -1,8 +1,15 @@
 "use strict";
 import { faker } from "@faker-js/faker";
-import fs from "fs/promises";
 
-async function generateMenuItems(numItems: number) {
+export type MenuItem = {
+  id: string;
+  image: string;
+  name: string;
+  price: string;
+  category: string;
+};
+
+export async function generateMenuItems(numItems: number): Promise<MenuItem[]> {
   const menuItems = [];
 
   for (let i = 0; i < numItems; i++) {
