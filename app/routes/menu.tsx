@@ -1,29 +1,30 @@
-import { useLoaderData } from "@remix-run/react";
-import { useMemo } from "react";
-import { getMenuItems, MenuItem } from "~/lib/menu.server";
+import { useLoaderData } from "@remix-run/react"
+import { useMemo } from "react"
+import { getMenuItems, MenuItem } from "~/lib/menu.server"
+import { AddToCart } from "./add-to-cart"
 
 export async function loader() {
-  const menu = await getMenuItems();
+  const menu = await getMenuItems()
 
   const categories = menu.reduce((acc, item) => {
     if (!acc.has(item.category)) {
-      acc.set(item.category, []);
+      acc.set(item.category, [])
     }
 
-    acc.get(item.category)?.push(item);
+    acc.get(item.category)?.push(item)
 
-    return acc;
-  }, new Map<string, MenuItem[]>());
+    return acc
+  }, new Map<string, MenuItem[]>())
 
-  return { menu, catEntries: Array.from(categories.entries()) };
+  return { menu, catEntries: Array.from(categories.entries()) }
 }
 
 export default function Menu() {
-  const { menu, catEntries } = useLoaderData<typeof loader>();
+  const { menu, catEntries } = useLoaderData<typeof loader>()
 
   const categories = useMemo(() => {
-    return new Map(catEntries);
-  }, [catEntries]);
+    return new Map(catEntries)
+  }, [catEntries])
 
   return (
     <div>
@@ -53,7 +54,7 @@ export default function Menu() {
         ))}
       </div>
     </div>
-  );
+  )
 }
 
 function MenuItem(props: { item: MenuItem }) {
@@ -67,17 +68,15 @@ function MenuItem(props: { item: MenuItem }) {
       <div className="p-4 mt-2">
         <h3 className="text-lg font-bold">{props.item.name}</h3>
         <p className="text-gray-500">{props.item.price}</p>
-        <button className="mt-4 w-full bg-gray-800 text-white px-4 py-2 rounded">
-          Add to cart
-        </button>
+        <AddToCart id={props.item.id} />
       </div>
     </div>
-  );
+  )
 }
 
 function lowerToDisplayCase(str: string) {
   return str
     .split(" ")
     .map((word) => word[0].toUpperCase() + word.slice(1))
-    .join(" ");
+    .join(" ")
 }
