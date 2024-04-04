@@ -47,7 +47,7 @@ export function RemoveFromCart({ id }: { id: string }) {
     <fetcher.Form method="post" action="/add-to-cart">
       <input type="hidden" name="intent" value="remove" />
       <input type="hidden" name="id" value={id} />
-      <button type="submit" className="border rounded-sm p-2">
+      <button type="submit" className="w-full bg-gray-400 rounded-sm p-2 mt-2">
         Remove from Cart
       </button>
     </fetcher.Form>

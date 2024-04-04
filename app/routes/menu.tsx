@@ -1,7 +1,7 @@
 import { useLoaderData } from "@remix-run/react"
 import { useMemo } from "react"
 import { getMenuItems, MenuItem } from "~/lib/menu.server"
-import { AddToCart } from "./add-to-cart"
+import { AddToCart, RemoveFromCart } from "./add-to-cart"
 
 export async function loader() {
   const menu = await getMenuItems()
@@ -69,6 +69,7 @@ function MenuItem(props: { item: MenuItem }) {
         <h3 className="text-lg font-bold">{props.item.name}</h3>
         <p className="text-gray-500">{props.item.price}</p>
         <AddToCart id={props.item.id} />
+        <RemoveFromCart id={props.item.id} />
       </div>
     </div>
   )
