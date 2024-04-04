@@ -2,7 +2,7 @@
 import { faker } from "@faker-js/faker";
 import fs from "fs/promises";
 
-export async function generateMenuItems(numItems: number) {
+async function generateMenuItems(numItems: number) {
   const menuItems = [];
 
   for (let i = 0; i < numItems; i++) {
@@ -27,15 +27,11 @@ export async function generateMenuItems(numItems: number) {
   return menuItems;
 }
 
-async function main() {
-  try {
-    const numItems = 12; // Change this to the desired number of menu items
-    const menuItems = await generateMenuItems(numItems);
-    const fileName = "menu.json";
-    await fs.writeFile(`app/${fileName}`, JSON.stringify(menuItems, null, 2));
-  } catch (error) {
-    console.error("Error:", error);
-  }
-}
+let _menuItems: null | ReturnType<typeof generateMenuItems> = null;
 
-main();
+export function getMenuItems() {
+  if (!_menuItems) {
+    _menuItems = generateMenuItems(12);
+  }
+  return _menuItems;
+}

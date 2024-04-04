@@ -1,8 +1,8 @@
 import { useLoaderData } from "@remix-run/react";
-import { generateMenuItems } from "~/lib/menu.server";
+import { getMenuItems } from "~/lib/menu.server";
 
 export async function loader() {
-  const menu = await generateMenuItems(12);
+  const menu = await getMenuItems();
   return { menu };
 }
 
