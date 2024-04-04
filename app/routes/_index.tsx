@@ -22,13 +22,13 @@ export default function Index() {
           </div>
           <div className="absolute top-20 left-0 w-full h-full flex items-center justify-center">
             <Link to="/menu" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
-              ORDER BURRITOS NOW
+              MENU MENUE MENU
             </Link>
           </div>
         </div>
       </div>
       <Link to="/menu" className="bg-blue-500 text-white font-semibold mt-6 py-4 px-8 rounded hover:bg-blue-700 text-4xl">
-        MENU MENU MENU
+        ORDER NOW
       </Link>
     </div>
   );
