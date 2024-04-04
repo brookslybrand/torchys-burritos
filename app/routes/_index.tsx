@@ -1,4 +1,5 @@
 import type { MetaFunction } from "@remix-run/cloudflare";
+import { Link } from "@remix-run/react"
 
 export const meta: MetaFunction = () => {
   return [
@@ -13,23 +14,22 @@ export const meta: MetaFunction = () => {
 export default function Index() {
   return (
     <div style={{ fontFamily: "system-ui, sans-serif", lineHeight: "1.8" }}>
-      <h1>Welcome to Remix (with Vite and Cloudflare)</h1>
-      <ul>
-        <li>
-          <a
-            target="_blank"
-            href="https://developers.cloudflare.com/pages/framework-guides/deploy-a-remix-site/"
-            rel="noreferrer"
-          >
-            Cloudflare Pages Docs - Remix guide
-          </a>
-        </li>
-        <li>
-          <a target="_blank" href="https://remix.run/docs" rel="noreferrer">
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+      <div>
+        <div className="relative">
+          <img src="torchys-burrito.webp" alt="burrito on fire" style={{height: "40rem"}} className="w-full object-cover"/>
+          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center space-around">
+            <span className="text-white text-9xl font-bold bg-black bg-opacity-50 p-4">TORCHYS TACOS</span>
+          </div>
+          <div className="absolute top-20 left-0 w-full h-full flex items-center justify-center">
+            <Link to="/menu" className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-700">
+              ORDER BURRITOS NOW
+            </Link>
+          </div>
+        </div>
+      </div>
+      <Link to="/menu" className="bg-blue-500 text-white font-semibold mt-6 py-4 px-8 rounded hover:bg-blue-700 text-4xl">
+        MENU MENU MENU
+      </Link>
     </div>
   );
 }
