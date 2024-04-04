@@ -23,13 +23,7 @@ export async function action({ request }: ActionFunctionArgs) {
   return {}
 }
 
-export function AddToCart({
-  id,
-  className,
-}: {
-  id: string
-  className?: string
-}) {
+export function AddToCart({ id }: { id: string }) {
   const fetcher = useFetcher()
 
   return (
