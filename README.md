@@ -1,5 +1,7 @@
 # Welcome to Remix + Vite!
 
+This was a hackathon project for [Remix Austin meetup](https://remixaustin.com/) called [Remix Rodeo](https://remix-austin.github.io/remix-rodeo-april/)
+
 📖 See the [Remix docs](https://remix.run/docs) and the [Remix Vite docs](https://remix.run/docs/en/main/future/vite) for details on supported features.
 
 ## Typegen
